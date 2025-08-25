@@ -1,0 +1,24 @@
+<!-- students/templates/students/contact.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контактная форма</title>
+</head>
+<body>
+    <h1>Свяжитесь с нами</h1>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div>
+            <label for="name">Ваше имя</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="message">Ваше сообщение</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit">Отправить</button>
+    </form>
+</body>
+</html>
