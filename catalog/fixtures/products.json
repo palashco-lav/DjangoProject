@@ -1,0 +1,106 @@
+[
+{
+  "model": "catalog.product",
+  "pk": 1,
+  "fields": {
+    "name": "Смартфон iPhone 13",
+    "description": "Новый смартфон с отличной камерой",
+    "image": "products/iphone13.jpg",
+    "category": 1,
+    "price": "899.99",
+    "created_at": "2024-01-15T10:00:00Z",
+    "updated_at": "2024-01-15T10:00:00Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 2,
+  "fields": {
+    "name": "Ноутбук Dell XPS",
+    "description": "Мощный ноутбук для работы и игр",
+    "image": "products/dell_xps.jpg",
+    "category": 1,
+    "price": "1299.99",
+    "created_at": "2024-01-14T09:30:00Z",
+    "updated_at": "2024-01-14T09:30:00Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 3,
+  "fields": {
+    "name": "Хлопковая футболка",
+    "description": "Удобная футболка из 100% хлопка",
+    "image": "products/t-shirt.jpg",
+    "category": 2,
+    "price": "29.99",
+    "created_at": "2024-01-13T14:20:00Z",
+    "updated_at": "2024-01-13T14:20:00Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 4,
+  "fields": {
+    "name": "Джинсы",
+    "description": "Классические джинсы прямого кроя",
+    "image": "products/jeans.jpg",
+    "category": 2,
+    "price": "59.99",
+    "created_at": "2024-01-12T11:45:00Z",
+    "updated_at": "2024-01-12T11:45:00Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 5,
+  "fields": {
+    "name": "Война и мир",
+    "description": "Классический роман Льва Толстого",
+    "image": "products/war_and_peace.jpg",
+    "category": 3,
+    "price": "19.99",
+    "created_at": "2024-01-11T16:10:00Z",
+    "updated_at": "2024-01-11T16:10:00Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 6,
+  "fields": {
+    "name": "Преступление и наказание",
+    "description": "Роман Фёдора Достоевского",
+    "image": "products/crime_and_punishment.jpg",
+    "category": 3,
+    "price": "15.99",
+    "created_at": "2024-01-10T13:25:00Z",
+    "updated_at": "2024-01-10T13:25:00Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 7,
+  "fields": {
+    "name": "Офисное кресло",
+    "description": "Эргономичное кресло для работы",
+    "image": "products/office_chair.jpg",
+    "category": 4,
+    "price": "199.99",
+    "created_at": "2024-01-09T08:15:00Z",
+    "updated_at": "2024-01-09T08:15:00Z"
+  }
+},
+{
+  "model": "catalog.product",
+  "pk": 8,
+  "fields": {
+    "name": "Журнальный столик",
+    "description": "Стильный столик для гостиной",
+    "image": "products/coffee_table.jpg",
+    "category": 4,
+    "price": "149.99",
+    "created_at": "2024-01-08T17:40:00Z",
+    "updated_at": "2024-01-08T17:40:00Z"
+  }
+}
+]
