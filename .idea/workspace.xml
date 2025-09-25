@@ -4,44 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e1e77f5d-d9b9-4422-9da3-eebad739cda3" name="Changes" comment="Выполнение ДЗ 3.1">
-      <change afterPath="$PROJECT_DIR$/library/templates/library/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/templates/library/book_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/templates/library/books_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/library/templates/library/header.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/management/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/management/commands/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/management/commands/fill_products.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/templates/products/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/templates/products/header.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/templates/products/product_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/templates/products/product_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/products/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/students/templates/students/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/students/templates/students/example.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/students/templates/students/header.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/students/templates/students/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/students/templates/students/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/students/templates/students/student_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/students/templates/students/student_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/library/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/library/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/bootstrap.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/bootstrap.esm.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/bootstrap.esm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/students/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/students/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/students/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/students/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/students/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/students/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/students/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/students/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="e1e77f5d-d9b9-4422-9da3-eebad739cda3" name="Changes" comment="Выполнение ДЗ 3.2" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -163,7 +126,7 @@
       <workItem from="1758407055760" duration="233000" />
       <workItem from="1758407307931" duration="189000" />
       <workItem from="1758410437106" duration="17001000" />
-      <workItem from="1758758153538" duration="5926000" />
+      <workItem from="1758758153538" duration="6738000" />
     </task>
     <task id="LOCAL-00001" summary="Выполнение ДЗ">
       <option name="closed" value="true" />
@@ -189,7 +152,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758181251138</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Выполнение ДЗ 3.2">
+      <option name="closed" value="true" />
+      <created>1758788883632</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1758788883632</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -222,7 +193,8 @@
     <MESSAGE value="Выполнение ДЗ" />
     <MESSAGE value="Выполнение ДЗ 2" />
     <MESSAGE value="Выполнение ДЗ 3.1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Выполнение ДЗ 3.1" />
+    <MESSAGE value="Выполнение ДЗ 3.2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Выполнение ДЗ 3.2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
