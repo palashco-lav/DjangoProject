@@ -15,7 +15,7 @@ class Student(models.Model):
     ]
 
     first_name = models.CharField(max_length=10, verbose_name='Имя')
-    last_name = models.CharField(max_length=10, verbose_name='Фамилия')
+    last_name = models.CharField(max_length=15, verbose_name='Фамилия')
     year = models.CharField(max_length=6, choices=YEAR_IN_SCHOOL_CHOICES, default=FIRST_YEAR, verbose_name='Курс')
 
     def __str__(self):
