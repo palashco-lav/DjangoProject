@@ -5,6 +5,8 @@ from .models import Product
 
 
 class ProductDetailView(View):
+
+
     """Контроллер для отображения детальной информации о товаре"""
 
     def get(self, request, product_id):
@@ -19,14 +21,17 @@ class ProductDetailView(View):
 
         return render(request, 'products/product_detail.html', context)
 
-def product_list(request):
+def home(request):
+    return render(request, 'products/home.html')
+
+def products_list(request):
     """Представление для списка всех товаров"""
     products = Product.objects.all()
     context = {
         'products': products,
         'title': 'Каталог товаров'
     }
-    return render(request, 'products/product_list.html', context)
+    return render(request, 'products/products_list.html', context)
 
 # Альтернативный вариант с функциональным представлением
 def product_detail(request, product_id):
