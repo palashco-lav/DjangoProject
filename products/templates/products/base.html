@@ -1,0 +1,68 @@
+<!-- templates/products/base.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Магазин товаров{% endblock %}</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+
+    <!-- Дополнительные стили -->
+    <style>
+        body {
+            padding-top: 0;
+        }
+        .main-content {
+            min-height: calc(100vh - 200px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Подключаем header -->
+    {% include 'products/header.html' %}
+
+    <!-- Основное содержимое -->
+    <main class="main-content">
+        {% block content %}
+        <!-- Содержимое страниц будет здесь -->
+        {% endblock %}
+    </main>
+
+    <!-- Подвал -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>🛍️ Магазин товаров</h5>
+                    <p>Лучшие товары по выгодным ценам</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Контакты</h5>
+                    <p>📞 +7 (999) 123-45-67<br>📧 info@magazin.ru</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Мы в соцсетях</h5>
+                    <div>
+                        <a href="#" class="text-light me-2">📘 VK</a>
+                        <a href="#" class="text-light me-2">📷 Instagram</a>
+                        <a href="#" class="text-light">🐦 Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="bg-light">
+            <div class="text-center">
+                <small>&copy; 2024 Магазин товаров. Все права защищены.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Дополнительные скрипты -->
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>

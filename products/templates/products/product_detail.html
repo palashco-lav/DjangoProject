@@ -1,0 +1,63 @@
+<!-- templates/products/product_detail.html -->
+{% extends 'products/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <!-- Изображение товара -->
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid rounded">
+            {% else %}
+            <div class="bg-light rounded d-flex align-items-center justify-content-center" style="height: 400px;">
+                <span class="text-muted">Нет изображения</span>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="col-md-6">
+            <!-- Основная информация о товаре -->
+            <h1 class="display-4">{{ product.name }}</h1>
+
+            <div class="mb-3">
+                <span class="h3 text-primary">{{ product.price }} руб.</span>
+                <span class="badge {% if product.in_stock %}bg-success{% else %}bg-danger{% endif %} ms-2">
+                    {% if product.in_stock %}В наличии{% else %}Нет в наличии{% endif %}
+                </span>
+            </div>
+
+            <div class="mb-3">
+                <strong>Категория:</strong>
+                <span class="badge bg-secondary">{{ product.category }}</span>
+            </div>
+
+            <!-- Описание товара -->
+            <div class="mb-4">
+                <h5>Описание:</h5>
+                <p class="lead">{{ product.description }}</p>
+            </div>
+
+            <!-- Дополнительная информация -->
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Дополнительная информация</h6>
+                    <ul class="list-unstyled">
+                        <li><strong>Дата добавления:</strong> {{ product.created_at|date:"d.m.Y" }}</li>
+                        <li><strong>ID товара:</strong> {{ product.id }}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Кнопки действий -->
+            <div class="mt-4">
+                {% if product.in_stock %}
+                <button class="btn btn-primary btn-lg">Добавить в корзину</button>
+                {% endif %}
+                <a href="{% url 'product_list' %}" class="btn btn-outline-secondary">Назад к каталогу</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
