@@ -39,9 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'students',
-    'catalog', # Приложение каталог
-    'library',  # Приложение библиотека
+#    'students',
+#    'catalog', # Приложение каталог
+#    'library',  # Приложение библиотека
+    'products',  # Приложение продукты
 ]
 
 MIDDLEWARE = [
