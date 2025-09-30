@@ -1,11 +1,15 @@
 # library/urls.py
 from django.urls import path
-from .views import books_list, book_detail
+from .views import BookUpdateView, BookListView, BookCreateView, BookDeleteView, BookDetailView
+# from .views import books_list, book_detail
 
 app_name = 'library'
 
 
 urlpatterns = [
-    path('books_list/', books_list, name='books_list'),
-    path('book_detail/<int:book_id>', book_detail, name='book_detail'),
+    path('books/', BookListView.as_view(), name='books_list'),
+    path('books/new/', BookCreateView.as_view(), name='book_create'),
+    path('books/<int:pk>/', BookDetailView.as_view(), name='book_detail'),
+    path('books/<int:pk>/update/', BookUpdateView.as_view(), name='book_update'),
+    path('books/<int:pk>/delete/', BookDeleteView.as_view(), name='book_delete'),
 ]

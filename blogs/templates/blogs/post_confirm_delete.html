@@ -1,0 +1,25 @@
+{% extends 'blogs/base.html' %}
+
+{% block title %}Удаление записи - {{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="delete-confirmation" style="max-width: 500px; margin: 0 auto; text-align: center;">
+    <h2>Удаление записи</h2>
+    
+    <div style="background: #fff3cd; padding: 20px; border: 1px solid #ffeaa7; border-radius: 5px; margin-bottom: 20px;">
+        <h3 style="color: #856404; margin-top: 0;">Вы уверены, что хотите удалить запись?</h3>
+        <p><strong>"{{ post.title }}"</strong></p>
+        <p style="color: #666; font-size: 0.9em;">Это действие нельзя отменить.</p>
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" style="padding: 10px 20px; background: #dc3545; color: white; border: none; border-radius: 3px; margin-right: 10px;">
+            Да, удалить
+        </button>
+        <a href="{% url 'blogs:post_detail' post.pk %}" style="padding: 10px 20px; background: #6c757d; color: white; text-decoration: none; border-radius: 3px;">
+            Отмена
+        </a>
+    </form>
+</div>
+{% endblock %}

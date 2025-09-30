@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Блог{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        .header { background: #f8f9fa; padding: 20px; margin-bottom: 20px; }
+        .main-menu { list-style: none; padding: 0; margin: 0; }
+        .main-menu li { display: inline-block; margin-right: 15px; }
+        .main-menu a { text-decoration: none; color: #007bff; }
+        .main-menu a:hover { text-decoration: underline; }
+        .content { padding: 20px 0; }
+        .messages { margin: 10px 0; padding: 10px; background: #e9ecef; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Мой Блог</h1>
+        {% include 'blogs/includes/main_menu.html' %}
+    </div>
+
+    <div class="content">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div>{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
