@@ -1,0 +1,35 @@
+{% extends 'blogs/base.html' %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="post-detail">
+    <h2>{{ post.title }}</h2>
+    
+    {% if post.preview %}
+    <img src="{{ post.preview.url }}" alt="{{ post.title }}" width="400" style="margin-bottom: 15px;">
+    {% endif %}
+    
+    <div class="post-content" style="line-height: 1.6; margin-bottom: 20px;">
+        {{ post.content|linebreaks }}
+    </div>
+    
+    <div class="post-meta" style="background: #f8f9fa; padding: 15px; border-radius: 5px;">
+        <p><strong>Дата создания:</strong> {{ post.created_at|date:"d.m.Y H:i" }}</p>
+        <p><strong>Количество просмотров:</strong> {{ post.views_count }}</p>
+        <p><strong>Статус публикации:</strong> 
+            {% if post.is_published %}
+                <span style="color: green;">Опубликовано</span>
+            {% else %}
+                <span style="color: red;">Черновик</span>
+            {% endif %}
+        </p>
+    </div>
+    
+    <div style="margin-top: 20px;">
+        <a href="{% url 'blogs:post_list' %}" style="margin-right: 15px;">← Назад к списку</a>
+        <a href="{% url 'blogs:post_update' post.pk %}" style="margin-right: 15px;">✏️ Редактировать</a>
+        <a href="{% url 'blogs:post_delete' post.pk %}" style="color: red;">🗑️ Удалить</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'blogs/base.html' %}
+
+{% block title %}Список записей блога{% endblock %}
+
+{% block content %}
+<h2>Все записи блога</h2>
+
+{% if posts %}
+    {% for post in posts %}
+    <div class="post" style="border: 1px solid #ddd; padding: 15px; margin-bottom: 20px;">
+        <h3><a href="{% url 'blogs:post_detail' post.pk %}">{{ post.title }}</a></h3>
+
+        {% if post.preview %}
+        <img src="{{ post.preview.url }}" alt="{{ post.title }}" width="300" style="margin-bottom: 10px;">
+        {% endif %}
+
+        <p>{{ post.content|truncatewords:30 }}</p>
+
+        <div style="font-size: 0.9em; color: #666;">
+            <p><strong>Дата создания:</strong> {{ post.created_at|date:"d.m.Y H:i" }}</p>
+            <p><strong>Просмотры:</strong> {{ post.views_count }}</p>
+            <p><strong>Статус:</strong>
+                {% if post.is_published %}
+                    <span style="color: green;">Опубликовано</span>
+                {% else %}
+                    <span style="color: red;">Черновик</span>
+                {% endif %}
+            </p>
+        </div>
+
+        <div style="margin-top: 10px;">
+            <a href="{% url 'blogs:post_detail' post.pk %}" style="margin-right: 10px;">Читать далее</a>
+            <a href="{% url 'blogs:post_update' post.pk %}" style="margin-right: 10px;">Редактировать</a>
+            <a href="{% url 'blogs:post_delete' post.pk %}" style="color: red;">Удалить</a>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>Пока нет записей в блоге. <a href="{% url 'blogs:post_create' %}">Создайте первую запись!</a></p>
+{% endif %}
+{% endblock %}

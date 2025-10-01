@@ -1,0 +1,50 @@
+{% extends 'blogs/base.html' %}
+
+{% block title %}
+    {% if object %}Редактирование {{ object.title }}{% else %}Создание новой записи{% endif %}
+{% endblock %}
+
+{% block content %}
+<h2>{% if object %}Редактирование записи{% else %}Создание новой записи{% endif %}</h2>
+
+<form method="post" enctype="multipart/form-data" style="max-width: 600px;">
+    {% csrf_token %}
+    
+    <div style="margin-bottom: 15px;">
+        <label for="{{ form.title.id_for_label }}">Заголовок:</label>
+        {{ form.title }}
+        {% if form.title.errors %}
+        <div style="color: red;">{{ form.title.errors }}</div>
+        {% endif %}
+    </div>
+    
+    <div style="margin-bottom: 15px;">
+        <label for="{{ form.content.id_for_label }}">Содержимое:</label>
+        {{ form.content }}
+        {% if form.content.errors %}
+        <div style="color: red;">{{ form.content.errors }}</div>
+        {% endif %}
+    </div>
+    
+    <div style="margin-bottom: 15px;">
+        <label for="{{ form.preview.id_for_label }}">Превью:</label>
+        {{ form.preview }}
+        {% if form.preview.errors %}
+        <div style="color: red;">{{ form.preview.errors }}</div>
+        {% endif %}
+    </div>
+    
+    <div style="margin-bottom: 15px;">
+        <label>
+            {{ form.is_published }} Опубликовать
+        </label>
+    </div>
+    
+    <div>
+        <button type="submit" style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 3px;">
+            {% if object %}Сохранить изменения{% else %}Создать запись{% endif %}
+        </button>
+        <a href="{% url 'blogs:post_list' %}" style="margin-left: 10px;">Отмена</a>
+    </div>
+</form>
+{% endblock %}

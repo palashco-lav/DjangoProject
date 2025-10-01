@@ -1,0 +1,15 @@
+<!-- library/templates/library/book_confirm_delete.html -->
+{% extends 'library/base.html' %}
+
+{% block title %}Удаление книги{% endblock %}
+
+{% block content %}
+{% include 'library/header.html' %}
+<h2>Удаление книги</h2>
+<p>Вы действительно хотите удалить "{{ book.title }}"</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Подьвердить</button>
+    <a href="{% url 'library:books_list%' book,pk }" class="btn-primary">Отменить</a>
+</form>
+{% endblock %}
