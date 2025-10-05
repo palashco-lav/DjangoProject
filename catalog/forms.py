@@ -1,11 +1,16 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.template.defaultfilters import filesizeformat
+from django.conf import settings
 from .models import Product, Category
 
 
 class ProductForm(forms.ModelForm):
     """Форма для создания и редактирования продукта с валидацией запрещенных слов и изображений"""
+
+    # Настройки валидации изображений
+    MAX_UPLOAD_SIZE = 5 * 1024 * 1024  # 5 МБ
+    ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/jpg']
 
     class Meta:
         model = Product
@@ -66,7 +71,14 @@ class ProductForm(forms.ModelForm):
             return False
 
         text_lower = text.lower()
-        for forbidden_word in self.FORBIDDEN_WORDS:
+
+        # ✅ Используем FORBIDDEN_WORDS из настроек Django
+        forbidden_words = getattr(settings, 'FORBIDDEN_WORDS', [
+            'казино', 'криптовалюта', 'крипта', 'биржа',
+            'дешево', 'бесплатно', 'обман', 'полиция', 'радар'
+        ])
+
+        for forbidden_word in forbidden_words:
             if forbidden_word in text_lower:
                 return forbidden_word
         return False
