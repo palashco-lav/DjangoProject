@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-#    'students',
+    'students',
     'catalog', # Приложение каталог
-#    'library',  # Приложение библиотека
+    'library',  # Приложение библиотека
     'products',  # Приложение продукты
     'blogs',  # Приложение блог
 ]
