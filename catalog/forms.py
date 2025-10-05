@@ -7,16 +7,6 @@ from .models import Product, Category
 class ProductForm(forms.ModelForm):
     """Форма для создания и редактирования продукта с валидацией запрещенных слов и изображений"""
 
-    # Список запрещенных слов
-    FORBIDDEN_WORDS = [
-        'казино', 'криптовалюта', 'крипта', 'биржа',
-        'дешево', 'бесплатно', 'обман', 'полиция', 'радар'
-    ]
-
-    # Настройки валидации изображений
-    MAX_UPLOAD_SIZE = 5 * 1024 * 1024  # 5 МБ
-    ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/jpg']
-
     class Meta:
         model = Product
         fields = ['name', 'description', 'image', 'category', 'price', 'is_available']

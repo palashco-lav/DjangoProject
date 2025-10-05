@@ -34,6 +34,16 @@ ALLOWED_HOSTS = []
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# Список запрещенных слов
+FORBIDDEN_WORDS = [
+    'казино', 'криптовалюта', 'крипта', 'биржа',
+    'дешево', 'бесплатно', 'обман', 'полиция', 'радар'
+]
+
+# Настройки валидации изображений
+MAX_UPLOAD_SIZE = 5 * 1024 * 1024  # 5 МБ
+ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/jpg']
+
 # Настройки для загрузки файлов
 FILE_UPLOAD_MAX_MEMORY_SIZE = 5 * 1024 * 1024  # 5 MB
 DATA_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10 MB
