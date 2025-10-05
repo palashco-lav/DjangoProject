@@ -1,0 +1,141 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title mb-0">{{ title }}</h2>
+            </div>
+            <div class="card-body">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <!-- Показываем текущее изображение при редактировании -->
+                {% if form.instance.image and form.instance.pk %}
+                <div class="mb-4">
+                    <h5>Текущее изображение:</h5>
+                    <div class="text-center">
+                        <img src="{{ form.instance.image.url }}" class="img-fluid rounded"
+                             alt="{{ form.instance.name }}" style="max-height: 200px;">
+                        <p class="text-muted mt-2">
+                            <small>Файл: {{ form.instance.get_image_filename }}</small>
+                        </p>
+                    </div>
+                </div>
+                {% endif %}
+
+                <form method="post" enctype="multipart/form-data" id="product-form">
+                    {% csrf_token %}
+
+                    {% for field in form %}
+                    <div class="mb-3">
+                        {% if field.name == 'is_available' %}
+                        <!-- ✅ Специальная стилизация для чекбокса "В наличии" -->
+                        <div class="form-check">
+                            {{ field }}
+                            <label for="{{ field.id_for_label }}" class="form-check-label">
+                                {{ field.label }}
+                                {% if field.field.required %}<span class="text-danger">*</span>{% endif %}
+                            </label>
+                            {% if field.help_text %}
+                            <div class="form-text">{{ field.help_text }}</div>
+                            {% endif %}
+                        </div>
+                        {% else %}
+                        <label for="{{ field.id_for_label }}" class="form-label">
+                            {{ field.label }}
+                            {% if field.field.required %}<span class="text-danger">*</span>{% endif %}
+                        </label>
+
+                        {% if field.name == 'image' %}
+                        <!-- Специальная стилизация для поля изображения -->
+                        <div class="image-upload-container">
+                            {{ field }}
+                            <div class="form-text">{{ field.help_text }}</div>
+
+                            <!-- Preview загружаемого изображения -->
+                            <div class="mt-2">
+                                <img id="image-preview" src="#" alt="Preview"
+                                     class="img-fluid rounded d-none" style="max-height: 150px;">
+                            </div>
+                        </div>
+                        {% else %}
+                        {{ field }}
+                        {% if field.help_text %}
+                        <div class="form-text">{{ field.help_text }}</div>
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+
+                        {% for error in field.errors %}
+                        <div class="alert alert-danger mt-1">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+
+                    <div class="d-flex gap-2">
+                        <button type="submit" class="btn btn-success">{{ submit_text }}</button>
+                        <a href="{% url 'catalog:product_list' %}" class="btn btn-secondary">Отмена</a>
+                        <a href="{% url 'catalog:home' %}" class="btn btn-outline-secondary">На главную</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+// Preview загружаемого изображения
+document.addEventListener('DOMContentLoaded', function() {
+    const imageInput = document.querySelector('input[type="file"]');
+    const imagePreview = document.getElementById('image-preview');
+
+    if (imageInput && imagePreview) {
+        imageInput.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+
+                reader.addEventListener('load', function() {
+                    imagePreview.src = reader.result;
+                    imagePreview.classList.remove('d-none');
+                });
+
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.classList.add('d-none');
+            }
+        });
+    }
+
+    // Валидация размера файла на клиенте
+    const form = document.getElementById('product-form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            const fileInput = document.querySelector('input[type="file"]');
+            if (fileInput && fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const maxSize = 5 * 1024 * 1024; // 5 МБ
+
+                if (file.size > maxSize) {
+                    e.preventDefault();
+                    alert('Размер файла превышает 5 МБ. Пожалуйста, выберите файл меньшего размера.');
+                    fileInput.value = '';
+                }
+            }
+        });
+    }
+});
+</script>
+{% endblock %}

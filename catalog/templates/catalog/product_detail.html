@@ -1,0 +1,70 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body text-center">
+                {% if product.image %}
+                <img src="{{ product.image.url }}" class="img-fluid rounded" 
+                     alt="{{ product.name }}" style="max-height: 400px;">
+                <p class="text-muted mt-2">
+                    <small>Файл: {{ product.get_image_filename }}</small>
+                </p>
+                {% else %}
+                <div class="bg-light rounded d-flex align-items-center justify-content-center" 
+                     style="height: 300px;">
+                    <div>
+                        <span class="text-muted d-block">Изображение отсутствует</span>
+                        <small class="text-muted">JPEG или PNG, до 5 МБ</small>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <h1>{{ product.name }}</h1>
+                    <!-- ✅ Бейдж наличия товара -->
+                    {% if product.is_available %}
+                    <span class="badge bg-success fs-6">В наличии</span>
+                    {% else %}
+                    <span class="badge bg-danger fs-6">Нет в наличии</span>
+                    {% endif %}
+                </div>
+                
+                {% if product.category %}
+                <p class="text-muted">Категория: {{ product.category.name }}</p>
+                {% endif %}
+                
+                <p class="lead">Цена: <strong>{{ product.price }} руб.</strong></p>
+                
+                <h4>Описание:</h4>
+                <p>{{ product.description|linebreaksbr|default:"Описание отсутствует" }}</p>
+                
+                <div class="mt-4">
+                    <p><small class="text-muted">Создан: {{ product.created_at|date:"d.m.Y H:i" }}</small></p>
+                    <p><small class="text-muted">Обновлен: {{ product.updated_at|date:"d.m.Y H:i" }}</small></p>
+                </div>
+
+                <div class="mt-4">
+                    <a href="{% url 'catalog:product_update' product.pk %}" class="btn btn-warning">
+                        <i class="bi bi-pencil"></i> Редактировать
+                    </a>
+                    <a href="{% url 'catalog:product_delete' product.pk %}" class="btn btn-danger">
+                        <i class="bi bi-trash"></i> Удалить
+                    </a>
+                    <a href="{% url 'catalog:product_list' %}" class="btn btn-secondary">
+                        <i class="bi bi-list"></i> К списку товаров
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

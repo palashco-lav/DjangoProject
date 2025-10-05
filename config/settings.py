@@ -30,6 +30,17 @@ DEBUG = True if os.getenv('DEBUG') == 'True' else False
 ALLOWED_HOSTS = []
 
 
+# Медиа файлы
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Настройки для загрузки файлов
+FILE_UPLOAD_MAX_MEMORY_SIZE = 5 * 1024 * 1024  # 5 MB
+DATA_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024  # 10 MB
+
+# Допустимые типы файлов для загрузки
+ALLOWED_IMAGE_EXTENSIONS = ['jpg', 'jpeg', 'png']
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,9 +50,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-#    'students',
+    'students',
     'catalog', # Приложение каталог
-#    'library',  # Приложение библиотека
+    'library',  # Приложение библиотека
     'products',  # Приложение продукты
     'blogs',  # Приложение блог
 ]
