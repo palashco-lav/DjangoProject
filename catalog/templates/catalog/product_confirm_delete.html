@@ -1,0 +1,82 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h2 class="card-title mb-0">{{ title }}</h2>
+            </div>
+            <div class="card-body">
+                <div class="alert alert-warning">
+                    <h5 class="alert-heading">Внимание!</h5>
+                    <p>Вы уверены, что хотите удалить товар <strong>"{{ product.name }}"</strong>?</p>
+                    <p class="mb-0">Это действие нельзя будет отменить. Все данные товара будут безвозвратно удалены.</p>
+                </div>
+
+                <!-- Информация о товаре -->
+                <div class="product-info mb-4">
+                    {% if product.image %}
+                    <div class="text-center mb-3">
+                        <img src="{{ product.image.url }}" class="img-fluid rounded" alt="{{ product.name }}" style="max-height: 200px;">
+                    </div>
+                    {% endif %}
+                    
+                    <div class="row">
+                        <div class="col-6">
+                            <strong>Название:</strong>
+                        </div>
+                        <div class="col-6">
+                            {{ product.name }}
+                        </div>
+                    </div>
+                    
+                    {% if product.category %}
+                    <div class="row mt-2">
+                        <div class="col-6">
+                            <strong>Категория:</strong>
+                        </div>
+                        <div class="col-6">
+                            {{ product.category.name }}
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="row mt-2">
+                        <div class="col-6">
+                            <strong>Цена:</strong>
+                        </div>
+                        <div class="col-6">
+                            {{ product.price }} руб.
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-2">
+                        <div class="col-6">
+                            <strong>Создан:</strong>
+                        </div>
+                        <div class="col-6">
+                            {{ product.created_at|date:"d.m.Y H:i" }}
+                        </div>
+                    </div>
+                </div>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="d-flex gap-2 justify-content-between">
+                        <div>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-trash"></i> Да, удалить
+                            </button>
+                            <a href="{% url 'catalog:product_detail' product.pk %}" class="btn btn-secondary">Отмена</a>
+                        </div>
+                        <a href="{% url 'catalog:product_list' %}" class="btn btn-outline-secondary">К списку товаров</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
