@@ -30,9 +30,15 @@ DEBUG = True if os.getenv('DEBUG') == 'True' else False
 ALLOWED_HOSTS = []
 
 
-# Медиа файлы
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# Список запрещенных слов
+FORBIDDEN_WORDS = [
+    'казино', 'криптовалюта', 'крипта', 'биржа',
+    'дешево', 'бесплатно', 'обман', 'полиция', 'радар'
+]
+
+# Настройки валидации изображений
+MAX_UPLOAD_SIZE = 5 * 1024 * 1024  # 5 МБ
+ALLOWED_IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/jpg']
 
 # Настройки для загрузки файлов
 FILE_UPLOAD_MAX_MEMORY_SIZE = 5 * 1024 * 1024  # 5 MB
@@ -55,6 +61,7 @@ INSTALLED_APPS = [
     'library',  # Приложение библиотека
     'products',  # Приложение продукты
     'blogs',  # Приложение блог
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -76,6 +83,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -148,5 +156,22 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Медиа файлы
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+AUTH_USER_MODEL = 'users.CustomUser'
+
+# SMTP-сервер Яндекса:  # cymhtdqizaqtnvbh
+EMAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
+EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.yandex.ru')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', 465))
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'False').lower() == 'true'
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', 'True').lower() == 'true'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'palashco.test@yandex.ru')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')  # Добавьте в .env
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+LOGIN_REDIRECT_URL = 'products:home'  # После входа - на главную
+LOGOUT_REDIRECT_URL = 'products:home'  # После выхода - на главную
+LOGIN_URL = '/users/login/'

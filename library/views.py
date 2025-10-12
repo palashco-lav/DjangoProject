@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import  CreateView, UpdateView, DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class AuthorListView(ListView):
@@ -36,7 +37,7 @@ class BookListView(ListView):
         queryset = super().get_queryset()
         return queryset.filter(publication_date__year__gt=2000)
 
-class BookCreateView(CreateView):
+class BookCreateView(LoginRequiredMixin, CreateView):
     model = Book
     form_class = BookForm
     template_name = 'library/book_form.html'
@@ -52,7 +53,7 @@ class BookDetailView(DetailView):
         context['author_books_count'] = Book.objects.filter(author=self.object.author).count()
         return context
 
-class BookUpdateView(UpdateView):
+class BookUpdateView(LoginRequiredMixin, UpdateView):
     model = Book
     form_class = BookForm
     template_name = 'library/book_form.html'

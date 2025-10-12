@@ -1,0 +1,51 @@
+{% extends 'products/base.html' %}
+
+{% block title %}Профиль пользователя{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Профиль пользователя</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 text-center">
+                            {% if user.avatar %}
+                                <img src="{{ user.avatar.url }}" alt="Avatar" class="rounded-circle mb-3" width="150" height="150">
+                            {% else %}
+                                <div class="bg-light rounded-circle d-flex align-items-center justify-content-center mb-3" style="width: 150px; height: 150px; margin: 0 auto;">
+                                    <span class="text-muted">Нет фото</span>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-8">
+                            <div class="mb-3">
+                                <strong>Email:</strong> {{ user.email }}
+                            </div>
+                            <div class="mb-3">
+                                <strong>Имя пользователя:</strong> {{ user.username }}
+                            </div>
+                            <div class="mb-3">
+                                <strong>Имя:</strong> {{ user.first_name|default:"Не указано" }}
+                            </div>
+                            <div class="mb-3">
+                                <strong>Фамилия:</strong> {{ user.last_name|default:"Не указана" }}
+                            </div>
+                            <div class="mb-3">
+                                <strong>Телефон:</strong> {{ user.phone_number|default:"Не указан" }}
+                            </div>
+                            <div class="mb-3">
+                                <strong>Страна:</strong> {{ user.country|default:"Не указана" }}
+                            </div>
+                            <a href="{% url 'users:profile_edit' %}" class="btn btn-primary">Редактировать профиль</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

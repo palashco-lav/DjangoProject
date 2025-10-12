@@ -1,9 +1,52 @@
-<!-- home.html -->
+<!-- products/templates/products/home.html -->
 {% extends 'products/base.html' %}
 
-{% block title %}Главная страница{% endblock %}
+{% block title %}Главная страница - Магазин товаров{% endblock %}
 
 {% block content %}
-<h1>Добро пожаловать на наш сайт!</h1>
-<p>Это главная страница нашего сайта.</p>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 text-center mb-5">
+            <h1 class="display-4">Добро пожаловать в наш магазин! 🛒</h1>
+            <p class="lead">Лучшие товары по выгодным ценам</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">🛍️ Широкий ассортимент</h5>
+                    <p class="card-text">Большой выбор товаров различных категорий</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">💰 Выгодные цены</h5>
+                    <p class="card-text">Конкурентные цены и регулярные акции</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">🚚 Быстрая доставка</h5>
+                    <p class="card-text">Оперативная доставка по всему городу</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12 text-center">
+            <a href="{% url 'products:list' %}" class="btn btn-primary btn-lg">
+                Перейти к товарам
+            </a>
+        </div>
+    </div>
+</div>
 {% endblock %}
