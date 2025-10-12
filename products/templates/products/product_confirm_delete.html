@@ -1,0 +1,29 @@
+{% extends 'products/base.html' %}
+
+{% block title %}Удаление товара{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">Удаление товара</h4>
+                </div>
+                <div class="card-body">
+                    <p class="lead">Вы уверены, что хотите удалить товар <strong>"{{ product.name }}"</strong>?</p>
+                    <p class="text-muted">Это действие нельзя будет отменить.</p>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="submit" class="btn btn-danger">Да, удалить</button>
+                            <a href="{% url 'products:list' %}" class="btn btn-secondary">Отмена</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
