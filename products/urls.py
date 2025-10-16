@@ -6,24 +6,19 @@ from .views import (
     TestTemplateView,
     ProductCreateView,
     ProductUpdateView,
-    ProductDeleteView
+    ProductDeleteView,
+    ProductUnpublishView
 )
 
 app_name = 'products'
 
 urlpatterns = [
-    # Главная страница
-    path('', HomeView.as_view(), name='home'),
-
-    # Список товаров
-    path('products/', ProductsListView.as_view(), name='list'),
-
-    # Тестовая страница
+    path('', ProductsListView.as_view(), name='list'),
+    path('home/', HomeView.as_view(), name='home'),
+    path('create/', ProductCreateView.as_view(), name='create'),
+    path('<int:product_id>/', ProductDetailView.as_view(), name='detail'),
+    path('<int:product_id>/update/', ProductUpdateView.as_view(), name='update'),
+    path('<int:product_id>/delete/', ProductDeleteView.as_view(), name='delete'),
+    path('<int:product_id>/unpublish/', ProductUnpublishView.as_view(), name='unpublish'),
     path('test/', TestTemplateView.as_view(), name='test'),
-
-    # Защищенные маршруты (только для авторизованных)
-    path('products/create/', ProductCreateView.as_view(), name='create'),
-    path('products/<int:product_id>/', ProductDetailView.as_view(), name='detail'),
-    path('products/<int:product_id>/update/', ProductUpdateView.as_view(), name='update'),
-    path('products/<int:product_id>/delete/', ProductDeleteView.as_view(), name='delete'),
 ]

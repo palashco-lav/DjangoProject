@@ -8,12 +8,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('products/', include('products.urls')),
+    path('products/', include('products.urls')),
     # path('', include('products.urls')),
-    # path('', include('catalog.urls')),
+    path('', include('catalog.urls')),
     # path('catalog/', include('catalog.urls')),
     # path('', include('library.urls')),
-    path('products/', include('products.urls')),
+    # path('products/', include('products.urls')),
     path('users/', include('users.urls', namespace='users')),
     # path('students/', include('students.urls')),
     # path('', include('library.urls', namespace='library')),
